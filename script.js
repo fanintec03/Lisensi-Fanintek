@@ -1,4 +1,3 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
@@ -6,7 +5,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBe8dlow52Y7aSBxDTOwyo3nS5ZMg0gzJ8",
   authDomain: "fandashboard.firebaseapp.com",
   projectId: "fandashboard",
-  storageBucket: "fandashboard.firebasestorage.app",
+  storageBucket: "fandashboard.appspot.com",
   messagingSenderId: "8318759415",
   appId: "1:8318759415:web:dc8c427606488a8b16bef2",
   measurementId: "G-HHCQEMEXF4"
@@ -17,6 +16,8 @@ const db = getFirestore(app);
 
 document.getElementById('inputForm').addEventListener('submit', async function(e) {
     e.preventDefault();
+
+    // Pastikan semua ID sudah benar dan ada di HTML
     const companyName = document.getElementById('companyName')?.value || "";
     const applicantName = document.getElementById('applicantName')?.value || "";
     const position = document.getElementById('position')?.value || "";
@@ -32,45 +33,36 @@ document.getElementById('inputForm').addEventListener('submit', async function(e
     const clientName = document.getElementById('clientName')?.value || "";
 
     const data = {
-        companyName,
-        applicantName,
-        position,
-        projectName,
-        submissionDate,
-        status,
-        applicationName,
-        type,
-        quantity,
-        duration,
-        purpose,
-        description,
+        companyName: companyName,
+        applicantName: applicantName,
+        position: position,
+        projectName: projectName,
+        submissionDate: submissionDate,
+        status: status,
+        applicationName: applicationName,
+        type: type,
+        quantity: quantity,
+        duration: duration,
+        purpose: purpose,
+        description: description,
         documentNumber: "",
         pmName: "",
-        clientName
+        clientName: clientName
     };
 
     const statusMessage = document.getElementById('messageStatus');
-    if (statusMessage) {
-        statusMessage.textContent = 'Mengirim data...';
-        statusMessage.className = 'loading';
-    }
+
     try {
         await addDoc(collection(db, "licenses"), data);
         if (statusMessage) {
-            statusMessage.textContent = '✓ Data berhasil dikirim!';
-            statusMessage.className = 'success';
+            statusMessage.textContent = 'Data berhasil dikirim!';
+            statusMessage.style.color = 'green';
         }
         document.getElementById('inputForm').reset();
-        setTimeout(() => {
-            if (statusMessage) {
-                statusMessage.textContent = '';
-                statusMessage.className = '';
-            }
-        }, 4000);
     } catch (error) {
         if (statusMessage) {
-            statusMessage.textContent = '✗ Gagal mengirim data. Cek koneksi, rules, atau error di console.';
-            statusMessage.className = 'error';
+            statusMessage.textContent = 'Gagal mengirim data. Cek koneksi, rules, atau error di console.';
+            statusMessage.style.color = 'red';
         }
         console.error(error);
     }
