@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisensi Form Fanintek</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Application Form</h2>
+            <p class="subtitle">Fill in your details below</p>
+        </div>
+        <form id="inputForm">
+            <div class="form-group">
+                <label for="companyName">Company Name</label>
+                <input type="text" id="companyName" name="companyName" placeholder="Enter company name" required>
+            </div>
+            <div class="form-group">
+                <label for="applicantName">Applicant Name</label>
+                <input type="text" id="applicantName" name="applicantName" placeholder="Full name" required>
+            </div>
+            <div class="form-group">
+                <label for="position">Position</label>
+                <input type="text" id="position" name="position" placeholder="Job position" required>
+            </div>
+            <div class="form-group">
+                <label for="projectName">Project Name</label>
+                <input type="text" id="projectName" name="projectName" placeholder="Project title" required>
+            </div>
+            <div class="form-group">
+                <label for="submissionDate">Submission Date</label>
+                <input type="date" id="submissionDate" name="submissionDate" required>
+            </div>
+            <div class="form-group">
+                <label for="statusInput">Status</label>
+                <input type="text" id="statusInput" name="status" placeholder="Current status" required>
+            </div>
+            <div class="form-group">
+                <label for="applicationName">Application Name</label>
+                <input type="text" id="applicationName" name="applicationName" placeholder="Application name" required>
+            </div>
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" id="type" name="type" placeholder="Application type" required>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" placeholder="0" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration</label>
+                <input type="text" id="duration" name="duration" placeholder="e.g., 3 months" required>
+            </div>
+            <div class="form-group">
+                <label for="purpose">Purpose</label>
+                <input type="text" id="purpose" name="purpose" placeholder="Purpose of application" required>
+            </div>
+            <div class="form-group full">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Detailed description..." required></textarea>
+            </div>
+            <button type="submit">Submit Application</button>
+            <div id="messageStatus"></div>
+        </form>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
